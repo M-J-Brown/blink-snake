@@ -1,4 +1,4 @@
-# blink-snake
+# blink-snap
 
 ## ASSIGNMENT OVERVIEW
 The goal of this task is not to produce the best implementation of the game, but for us to see your coding

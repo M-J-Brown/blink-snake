@@ -41,17 +41,17 @@ object Value {
   )
 }
 
-case class Card(suit: Suit, value: Value)
-
-case class Deck(cards: IndexedSeq[Card]) {
-  def size: Int = cards.size
-}
+case class Card(value: Value, suit: Suit)
 
 object Deck {
-  val full: Deck = Deck(
-    for {
+  implicit class DeckOps(deck: Deck) {
+    def cut: (Deck, Deck) = deck.splitAt(deck.size / 2)
+  }
+  type Deck = List[Card]
+
+  val full: Deck =
+    (for {
       suit <- Suit.all
       value <- Value.all
-    } yield Card(suit, value)
-  )
+    } yield Card(value, suit)).toList
 }
